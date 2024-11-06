@@ -10,6 +10,7 @@
                 <th scope="col">Marca</th>
                 <th scope="col">Descrição</th>
                 <th scope="col">Preço</th>
+                <th scope="col">Ação</th>
               </tr>
             </thead>
             <tbody>
@@ -21,6 +22,12 @@
                 <td>{{ product.brand }}</td>
                 <td>{{ product.description }}</td>
                 <td>R$ {{ product.price }}</td>
+                <td>
+                  <div class="d-flex gap-3">
+                    <i class="bi bi-pencil" style="color: #FFC71F; cursor: pointer;" title="Editar"></i> 
+                    <i class="bi bi-trash" style="color: #F5554A; cursor: pointer;" title="Deletar"></i>
+                  </div>
+                </td>
               </tr>
               {% endfor %}
             </tbody>
