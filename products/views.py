@@ -1,5 +1,8 @@
 from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
+from django.views.generic.edit import DeleteView
 from products.models import Product
+
 
 def add_product(request):
 # Pegando os dados do formulário
@@ -14,7 +17,10 @@ def add_product(request):
     
     return redirect('product_view')  # Redireciona para a view que exibe os produtos
 
-                 
+class ProductDeleteView(DeleteView):
+    model = Product
+    success_url = reverse_lazy("product_view")
+
 # Exibe os dados dos produtos cadastrados.
 def product_view(request):
     products = Product.objects.all()  # Busca todos os produtos
