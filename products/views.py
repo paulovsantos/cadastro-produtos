@@ -1,6 +1,4 @@
-from django.shortcuts import redirect, render
-from django.urls import reverse_lazy
-from django.views.generic.edit import DeleteView
+from django.shortcuts import get_object_or_404, redirect, render
 from products.models import Product
 
 
@@ -17,9 +15,34 @@ def add_product(request):
     
     return redirect('product_view')  # Redireciona para a view que exibe os produtos
 
-class ProductDeleteView(DeleteView):
+
+""" class ProductDeleteView(DeleteView):
     model = Product
     success_url = reverse_lazy("product_view")
+ """    
+ 
+
+def del_product(request, id):
+    product = get_object_or_404(Product, id=id)
+    
+    product.delete()
+    
+    return redirect('product_view')
+
+def update_product(request, id):
+    product = get_object_or_404(Product, id=id)
+    
+    product.title = request.POST.get('title', product.title)
+    product.category = request.POST.get('category', product.category)
+    product.brand = request.POST.get('brand', product.brand)
+    product.description = request.POST.get('description', product.description)
+    product.price = request.POST.get('price', product.price)
+
+
+    product.save()
+    
+    return redirect('product_view')
+    
 
 # Exibe os dados dos produtos cadastrados.
 def product_view(request):
