@@ -2,13 +2,22 @@
   <nav class="navbar bg-primary" data-bs-theme="dark">
     <div class="container-fluid">
       <div class="d-flex w-100 justify-content-between">
-        <span class="navbar-brand mb-0 h1">Products List</span>
-        <div>
-          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addProductModal">
-            <i class="bi bi-plus-circle"></i> Add New Product
+        <a class="navbar-brand mb-0 h1" href="{% url 'product_view' %}">Products List</a>
+        <!-- <span class="navbar-brand mb-0 h1">Products List</span> -->
+        <div class="d-flex align-items-center">
+          <div class="position-relative">
+           
+            <form action="{% url 'product_list' %}" method="get">
+              
+              <input name="search" type="text" class="form-control ps-5 bg-light text-black" placeholder="Search" >
+              <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ps-3"></i>
+            </form>
+          </div>
+          <button type="button" class="btn btn-success ms-2" data-bs-toggle="modal" data-bs-target="#addProductModal">
+              <i class="bi bi-plus-circle"></i> Add New Product
           </button>
-        </div>
       </div>
-    </div>
-  </nav>
-</div>
+          </div>
+      </div>
+    </nav>
+      </div>

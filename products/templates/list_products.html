@@ -23,13 +23,22 @@
                 <td>{{ product.description }}</td>
                 <td>R$ {{ product.price }}</td>
                 <td>
-                  <div class="d-flex justify-content-start align-items-center">
-                    <button type="submit" class="btn" data-bs-toggle="modal" data-bs-target="#updateProductModal">
-                      <i class="bi bi-pencil-fill" style="color: #FFC71F; cursor: pointer;" title="Editar"></i> 
+                  <!-- <div class="d-flex justify-content-start align-items-center">
+                    <button type="submit" class="btn" data-bs-toggle="modal" data-bs-target="#updateProductModal{{ product.id }}">
+                      <i class="bi bi-pencil-fill" style="color: #FFC71F; cursor: pointer;" title="Editar"></i>
                     </button>
-                    <button type="submit" class="btn" data-bs-toggle="modal" data-bs-target="#delProductModal">
+                    <button type="submit" class="btn" data-bs-toggle="modal" data-bs-target="#delProductModal{{ product.id }}">
                       <i class="bi bi-trash-fill" style="color: #F5554A; cursor: pointer;" title="Deletar"></i>
-                    </button>
+                    </button> -->
+                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                      <button type="submit" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateProductModal{{ product.id }}">
+                        <i class="bi bi-pencil-fill text-white"; cursor: pointer; title="Editar"></i>
+                      </button>
+                      <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delProductModal{{ product.id }}">
+                        <i class="bi bi-trash-fill text-white"; cursor: pointer; title="Deletar"></i>
+                      </button>
+                    </div>
+                  </form>
                   </div>             
                 </td>  
               {% endfor %}
